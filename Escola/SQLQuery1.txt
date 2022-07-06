@@ -1,0 +1,17 @@
+﻿create table Turma(
+	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	Nome varchar(50) not null,
+	Ativo bit null,
+);
+
+create table Aluno(
+	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	Nome varchar(50) not null,
+	DataNascimento datetime not null,
+	Sexo char not null,
+	TotalFaltas int null,
+	TurmaId int FOREIGN KEY references Turma(Id)
+);
+
+
+
