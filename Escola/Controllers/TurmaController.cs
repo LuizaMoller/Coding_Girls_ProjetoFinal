@@ -117,11 +117,15 @@ namespace Escola.Controllers
             {
                 return NotFound();
             }
-
-
-
-            _context.Turma.Remove(turma);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Turma.Remove(turma);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return Problem("Sem permissão para deletar turma sem alunos");
+            }
 
             return NoContent();
         }

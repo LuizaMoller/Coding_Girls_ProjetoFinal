@@ -12,7 +12,7 @@
         public int TurmaId { get; set; }
 
         // Navigation property
-        public virtual Turma? Turma { get; set; }
+        public virtual Turma? Turma { get; }
 
     }
 }

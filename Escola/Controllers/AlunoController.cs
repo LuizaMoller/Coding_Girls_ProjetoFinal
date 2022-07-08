@@ -103,6 +103,11 @@ namespace Escola.Controllers
 
             _context.Aluno.Add(aluno);
 
+            if (aluno.TurmaId == 0 || aluno.TurmaId == null)
+            {
+                return Problem("O aluno não pode ser incluído sem uma turma");
+            }
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAluno", new { id = aluno.Id }, aluno);
