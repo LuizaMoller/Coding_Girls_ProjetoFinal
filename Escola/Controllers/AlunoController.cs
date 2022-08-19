@@ -27,7 +27,7 @@ namespace Escola.Controllers
         {
             if (_context.Aluno == null || _context.Aluno.Count() == 0)
             {
-                return new JsonResult("Não há nenhum aluno cadastrado.");
+                return new JsonResult("No registered students.");
             }
             
             var aluno = await _context.Aluno.ToListAsync();
@@ -102,11 +102,6 @@ namespace Escola.Controllers
           }
 
             _context.Aluno.Add(aluno);
-
-            if (aluno.TurmaId == 0 || aluno.TurmaId == null)
-            {
-                return Problem("O aluno não pode ser incluído sem uma turma");
-            }
 
             await _context.SaveChangesAsync();
 

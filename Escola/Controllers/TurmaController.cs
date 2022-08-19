@@ -27,7 +27,7 @@ namespace Escola.Controllers
         {
             if (_context.Turma == null || _context.Turma.Count() == 0)
             {
-                return new JsonResult("Não há nenhuma turma cadastrada.");
+                return new JsonResult("No registered classes.");
             }
 
             var turma = await _context.Turma.ToListAsync();
@@ -108,6 +108,11 @@ namespace Escola.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTurma(int id)
         {
+            if (_context.Aluno.Where(a => a.TurmaId == id).Count() > 0)
+            {
+                return BadRequest();
+            }
+
             if (_context.Turma == null)
             {
                 return NotFound();
@@ -117,19 +122,12 @@ namespace Escola.Controllers
             {
                 return NotFound();
             }
-            try
-            {
-                _context.Turma.Remove(turma);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                return Problem("Sem permissão para deletar turma sem alunos");
-            }
+
+            _context.Turma.Remove(turma);
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
-
         private bool TurmaExists(int id)
         {
             return (_context.Turma?.Any(e => e.Id == id)).GetValueOrDefault();
