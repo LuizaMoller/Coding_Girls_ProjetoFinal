@@ -31,7 +31,7 @@ Projeto Final do curso Coding Girls em C#. Realizado pela BlueEdtech em parceria
 - Um aluno pode ser movido de turma
 - A consulta por turmas e alunos deve obedecer uma regra que é: só retornar alunos cuja condição é ativa(o)
 
-## Azure
+## Azure (LINKS TEMPORARIAMENTE INDISPONÍVEIS)
 - Link para API: [EscolaAPI](https://escola20220701200820.azurewebsites.net/).
 - Link exemplo de requisição para Turma: [EscolaTurma](https://escola20220701200820.azurewebsites.net/api/Turma).
 - Link exemplo de requisição para Aluno: [EsolaAluno](https://escola20220701200820.azurewebsites.net/api/Aluno).
